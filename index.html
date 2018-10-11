@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+  font-family: 'Open Sans', arial, sans-serif;
+  background:rgb(255, 255, 255);
+
+}
+*{
+  margin:0;
+  padding:0;
+}
+#categories{
+  overflow:hidden;
+  width:1100px;
+  margin:0 auto;
+}
+.clr:after{
+  content:"";
+  display:block;
+  clear:both;
+}
+#categories li{
+  position:relative;
+  list-style-type:none;
+  width:27.85714285714286%; /* = (100-2.5) / 3.5 */
+  padding-bottom: 32.16760145166612%; /* =  width /0.866 */
+  float:left;
+  overflow:hidden;
+  visibility:hidden;
+ 
+  -webkit-transform: rotate(-60deg) skewY(30deg);
+  -ms-transform: rotate(-60deg) skewY(30deg);
+  transform: rotate(-60deg) skewY(30deg);
+}
+#categories li:nth-child(3n+2){
+  margin:0 1%;
+}
+#categories li:nth-child(6n+4){
+  margin-left:0.5%;
+}
+#categories li:nth-child(6n+4), #categories li:nth-child(6n+5), #categories li:nth-child(6n+6) {
+	margin-top: -6.9285714285%;
+  margin-bottom: -6.9285714285%;
+  
+  -webkit-transform: translateX(50%) rotate(-60deg) skewY(30deg);
+  -ms-transform: translateX(50%) rotate(-60deg) skewY(30deg);
+  transform: translateX(50%) rotate(-60deg) skewY(30deg);
+}
+#categories li:nth-child(6n+4):last-child, #categories li:nth-child(6n+5):last-child, #categories li:nth-child(6n+6):last-child{
+  margin-bottom:0%;
+}
+#categories li *{
+  position:absolute;
+  visibility:visible;
+}
+#categories li > div{
+  width:100%;
+  height:100%;
+  text-align:center;
+  color:#fff;
+  overflow:hidden;
+  
+  -webkit-transform: skewY(-30deg) rotate(60deg);
+  -ms-transform: skewY(-30deg) rotate(60deg);
+  transform: skewY(-30deg) rotate(60deg);
+  
+	-webkit-backface-visibility:hidden;
+  
+}
+
+/* HEX CONTENT */
+#categories li img{
+  left:-100%; right:-100%;
+  width: auto; height:100%;
+  margin:0 auto;   
+}
+
+#categories div h1, #categories div p{
+  width:90%;
+  padding:0 5%;
+  background-color:#008080; background-color: rgba(0, 0, 0, 0.8);
+  font-family: 'Raleway', sans-serif;
+  
+  -webkit-transition: top .2s ease-out, bottom .2s ease-out, .2s padding .2s ease-out;
+  -ms-transition: top .2s ease-out, bottom .2s ease-out, .2s padding .2s ease-out;
+  transition: top .2s ease-out, bottom .2s ease-out, .2s padding .2s ease-out;
+}
+#categories li h1{
+  bottom:110%;
+  font-style:italic;
+  font-weight:normal;
+  font-size:1.5em;
+  padding-top:100%;
+  padding-bottom:100%;
+}
+#categories li h1:after{
+	content:'';
+  display:block;
+  position:absolute;
+  bottom:-1px; left:45%;
+  width:10%;
+  text-align:center;
+  z-index:1;
+  border-bottom:2px solid #fff;
+}
+#categories li p{
+	padding-top:50%;
+	top:110%;
+	padding-bottom:50%;
+}
+
+
+/* HOVER EFFECT  */
+
+#categories li div:hover h1 {
+  bottom:50%;
+  padding-bottom:10%;
+}
+
+#categories li div:hover p{
+  top:50%;
+  padding-top:10%;
+}
+#fork{
+  position:fixed;
+  top:0;
+  left:0;
+  color:#000;
+  text-decoration:none;
+  border:1px solid #000;
+  padding:.5em .7em;
+  margin:1%;
+  transition: color .5s;
+  overflow:hidden;
+}
+#fork:before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 130%; height: 100%;
+  background: #000;
+  z-index: -1;
+  transform-origin:0 0 ;
+  transform:translateX(-100%) skewX(-45deg);
+  transition: transform .5s;
+}
+#fork:hover {
+  color: #fff;
+}
+#fork:hover:before {
+  transform: translateX(0) skewX(-45deg);
+}
+
+.header{
+    display:flex;
+    justify-content: space-between;
+    width: 100%;
+    
+    height: 68px;
+    margin-bottom: calc(250px - 68px);
+    position: fixed;
+    /*left: calc(50% - 1100px/2);*/
+ 
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+.spacer{
+    flex-grow: 1;
+}
+.navigation ul li{
+    display:inline;
+    margin-left: 2em;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-transform: uppercase;
+    font-size: 18px;
+    line-height: 4rem;
+    font-weight: bolder;
+}
+#categories{
+    position: relative !important;
+    margin-top: 250px;
+}
+.smaller{
+    display: flex;
+}
+.smaller h2{
+    line-height: 64px;
+}
+.header.scrolled{
+    background-color: rgba(0,0,0,0.90);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+    color: #d1d1d1;
+
+}
+.logo{
+    padding-left: 20px;
+}
+.navigation{
+    padding-right: 20px;
+}
+
+.footer-distributed{
+    
+    background-color: rgba(0,0,0,0.90);
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    width: 100%;
+    text-align: left;
+    font:  16px sans-serif;
+    line-height: 1.5rem;
+    padding: 55px 50px;
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 30px;
+    color: #d1d1d1;
+}
+.footer-distributed a{
+    text-decoration: none;
+    color: inherit;
+}
+.footer-left{
+    grid-column-start: 1;
+}
+.footer-center{
+    grid-column-start: 2;
+
+}
+.footer-right{
+    grid-column-start: 3;
+}
+    
+    </style>
+</head>
+<body>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,800italic,400,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,700,300,200,100,900' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Amatic+SC:400,700' rel='stylesheet' type='text/css'>
+    <div class="header">
+        <div class="logo">
+                <img class="main-logo" src="./img/logo.jpg" alt="" width="250px" height="250px">
+                <div class="smaller">
+                    <img src="./img/small-logo.png" alt="" class="sec-logo" width="64px" height="64px">
+                    <h2>Mercado de las pulgas de Usaquen</h2>
+                </div>
+        </div>
+        <div class="spacer"></div>
+        <div class="navigation">
+            <nav>
+                <ul>
+                    <li>Nosotros</li>
+                    <li>Servicios</li>
+                    <li>Expositores</li>
+                    <li>Contacto</li>
+                </ul>
+            </nav>
+        </div>
+        
+    </div>
+    <ul id="categories" class="clr">
+      <li>
+          <div>
+            <img src="./img/im-01.jpg" alt=""/>
+            <h1>Artesanias en Fibra</h1>
+            <p>Todo esto lo puedes encontrar en el mercado de las pulgas de usaquen</p>
+        </div>
+      </li>
+      
+      <li>
+          <div>
+            <img src="./img/im-13.jpg" alt=""/>
+            <h1>Cocos adornados</h1>
+            <p>Todo esto lo puedes encontrar en el mercado de las pulgas de usaquen</p>
+        </div>
+      </li>
+      <li>
+            <div>
+              <img src="./img/im-15.jpg" alt=""/>
+              <h1>Calaveras Exoticas</h1>
+              <p>Todo esto lo puedes encontrar en el mercado de las pulgas de usaquen</p>
+          </div>
+        </li>
+      <li>
+          <div>
+            <img src="./img/im-10.jpg" alt=""/>
+            <h1>bolsos en cuero</h1>
+            <p>Todo esto lo puedes encontrar en el mercado de las pulgas de usaquen</p>
+        </div>
+      </li>
+      <li>
+          <div>
+            <img src="./img/im-08.jpg" alt=""/>
+            <h1>Pinturas en Lienzo</h1>
+            <p>Todo esto lo puedes encontrar en el mercado de las pulgas de usaquen</p>
+        </div>
+      </li><li>
+          <div>
+            <img src="./img/im-02.jpg" alt=""/>
+            <h1>Imanes personalizados</h1>
+            <p>Todo esto lo puedes encontrar en el mercado de las pulgas de usaquen</p>
+        </div>
+      </li>
+      <li>
+          <div>
+            <img src="./img/im-07.jpg" alt=""/>
+            <h1>Articulos religiosos</h1>
+            <p>Todo esto lo puedes encontrar en el mercado de las pulgas de usaquen</p>
+        </div>
+      </li>
+      <li>
+          <div>
+            <img src="./img/im-04.jpg" alt=""/>
+            <h1>Dulceria y confites</h1>
+            <p>Todo esto lo puedes encontrar en el mercado de las pulgas de usaquen</p>
+        </div>
+      </li>
+
+    </ul>
+
+
+    <footer class="footer-distributed">
+            <div class="footer-left">
+            <h3>Asociación Mercado de las Pulgas de Usaquén</h3>
+            <p class="footer-links">
+            <a href="#">Inicio</a>
+                                ·
+                                <a href="#">Blog</a>
+                                ·
+                                <a href="#">Precios</a>
+                                ·
+                                <a href="#">Nosotros</a>
+                                ·
+                                <a href="#">Faq</a>
+                                ·
+                                <a href="#">Contactos</a>
+            </p>
+            <p class="footer-company-name">
+            Más de 25 años incentivando la cultura y la artesanía en Usaquén y en Bogotá 
+            
+            </p>
+            </div>
+
+            <div class="footer-center">
+            <div>
+            <i class="fa fa-map-marker"></i>
+            <p><span>Carrera 5 # 120A-07 - Usaquén</span> Bogotá, Colombia</p>
+            </div>
+            <div>
+            <i class="fa fa-phone"></i>
+            <p>+571 4911004 / +571 4884542</p>
+            </div>
+            <div>
+            <i class="fa fa-envelope"></i>
+            <p><a href="mailto:contacto@pulgasusaquen.com">contacto@pulgasusaquen.com</a></p>
+            </div>
+            </div>
+
+
+            <div class="footer-right">
+            <p class="footer-company-about">
+            <span>Labor Original. Emblema de Colombia</span>
+                                Somos Actividad de Interes Cultural para la ciudad de Bogotá y orgullo de todos los colombianos..
+                            </p>
+            <div class="footer-icons">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-github"></i></a>
+            </div>
+            </div>
+
+
+            
+            </footer>
+    <script>
+        window.onscroll = function() {
+            console.log(window.scrollY);
+            var theImg = document.querySelector(".main-logo");
+            var secImg = document.querySelector(".smaller");
+            if(window.scrollY < 120){
+                var siz = 250 - window.scrollY;
+            theImg.style.width = siz + "px";
+            theImg.style.height = siz + "px";
+            theImg.style.display = "initial";
+            secImg.style.display = "none";
+            document.querySelector(".header").classList.remove("scrolled");
+
+            }else{
+                theImg.style.display = "none";
+                secImg.style.display = "flex";
+                document.querySelector(".header").classList.add("scrolled");
+
+            }
+
+        };
+    </script>
+
+</body>
+</html>
